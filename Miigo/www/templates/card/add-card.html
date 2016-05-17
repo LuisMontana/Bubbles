@@ -1,0 +1,25 @@
+<ion-modal-view>
+    <ion-header-bar class="bar-balanced">
+        <h1 class="title">Agregar Tarjeta</h1>
+        <div class="buttons">
+            <button class="button" ng-click="closeModal()">Cancelar</button>
+        </div>
+    </ion-header-bar>
+    <ion-content class="has-header">
+        <ion-list>
+            <label class="item item-input item-select">
+                <div class="input-label">Franquicia (marca)</div>
+                <select required="required" ng-model="inputs.franquicia" ng-options="franquicia as franquicia.Nombre for franquicia in data.tarjetas">
+                </select>
+            </label>
+            <label ng-show="inputs.franquicia.Nombre" class="item item-input item-select">
+                <div class="input-label">Tarjeta</div>
+                <select required="required" ng-model="inputs.tarjeta" ng-options="tarjeta as tarjeta.nombreTipo for tarjeta in inputs.franquicia.nmTipo">
+                </select>
+            </label>
+        </ion-list>
+        <div class="padding">
+            <button class="button button-balanced button-block" ng-click="agregarTarjeta(inputs.franquicia.Nombre, inputs.tarjeta)">Agregar</button>
+        </div>
+    </ion-content>
+</ion-modal-view>

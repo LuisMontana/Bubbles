@@ -1,0 +1,64 @@
+<ion-modal-view>
+    <ion-header-bar class="bar-positive">
+        <h1 class="title">Simular</h1>
+        <div class="buttons">
+            <button class="button" ng-click="closeSModal()">Cancelar</button>
+        </div>
+    </ion-header-bar>
+    <ion-content class="has-header">
+        <div class="card">
+            <div class="item item-text-wrap item-icon-left">
+                <i class="icon ion-card"></i>
+                {{simdata.card.nombreTipo}}
+            </div>
+        </div>
+        <div class="card" ng-show="simdata.calcular">
+            <div class="item item-text-wrap item-icon-left">
+                <i class="icon ion-cash"></i>
+                La cuota mensual sería
+                <span class="item-note balanced">{{simdata.result.cuota | currency}}</span>
+            </div>
+            <div class="item item-divider">Equivalencias</div>
+            <div class="item item-text-wrap item-icon-left">
+                <i class="icon ion-calendar"></i>
+                Cuota semanal
+                <span class="item-note balanced">{{simdata.result.cuota/4 | currency}}</span>
+            </div>
+            <div class="item item-text-wrap item-icon-left">
+                <i class="icon ion-calendar"></i>
+                Cuota diaria
+                <span class="item-note balanced">{{simdata.result.cuota/30 | currency}}</span>
+            </div>
+            <div class="item item-text-wrap item-icon-left">
+                <i class="icon ion-bag"></i>
+                Millas
+                <span class="item-note balanced">{{simdata.result.millas}}</span>
+            </div>
+        </div>
+        <ion-list>
+            <label class="item item-input item-select">
+                <div class="input-label">Tipo de operación</div>
+                <select required="required" ng-change="evaluarCuotas()" ng-model="simdata.tipo">
+                    <option value="avance">Avance</option>
+                    <option value="compra">Compra</option>
+                </select>
+            </label>
+            <div class="item item-text-wrap" ng-show="simdata.tipo=='avance'">
+                Los avances se difieren a 18 meses y tiene un costo de <strong>{{4139 | currency}}</strong>
+            </div>
+            <label class="item item-input">
+                <div class="input-label">Valor</div>
+                <input required="required" ng-model="simdata.monto" type="number" min="1" max="300000000"></input>
+            </label>
+            <div class="item item-divider">Cuotas</div>
+            <div class="item range">
+                Cuotas
+                <input type="range" ng-change="simdata.calcular && simularTarjeta()" ng-hide="simdata.tipo=='avance'" min="1" max="60" ng-model="simdata.cuotas">
+                <span>{{simdata.cuotas}}</span>
+            </div>
+        </ion-list>
+        <div class="padding">
+            <button class="button button-positive button-block" ng-click="simularTarjeta()">Simular</button>
+        </div>
+    </ion-content>
+</ion-modal-view>

@@ -1,0 +1,14 @@
+<ion-modal-view>
+    <ion-header-bar class="bar-balanced">
+        <h1 class="title">Seleccionar budget</h1>
+        <div class="buttons">
+            <button class="button" ng-click="closeModal()">Cancelar</button>
+        </div>
+    </ion-header-bar>
+    <ion-content class="has-header">
+        <ion-item ng-repeat="budget in budgets">
+            <h2> {{budget.id}} </h2>
+            <h2> {{budget.end}} </h2>
+        </ion-item>
+    </ion-content>
+</ion-modal-view>

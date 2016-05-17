@@ -1,0 +1,55 @@
+<ion-view view-title="Budget Overview">
+  <ion-content >
+    <miigo-status user="user"></miigo-status>
+    <div >
+        <div class="item item-divider">
+          Budget for the next {{topBudget.end}} day(s)
+        </div>
+      </div>
+
+      <div >
+      	
+        	<canvas heigth="60%" id="pie" class="chart chart-pie"
+          		chart-data="data" chart-labels="labels" chart-colours="colors">
+          </canvas> 
+         
+          <div>Budget: {{topBudget.salary}}</div>
+
+          <div> Money Spent: {{spent}}</div>
+
+
+      </div>  
+
+      <div >
+        <div class="item item-divider">
+          Money Left : {{mleft}}
+        </div> 
+
+        <div> Education : </div>
+
+        <progress id="progressbar" class="educ" max={{topBudget.educ}} value="{{progressE}}"></progress>
+
+        <div> Food : </div>
+        <progress class="food" max={{topBudget.food}} value="{{progressF}}" ></progress>
+
+        <div> Transport : </div>
+        <progress class="transp" max={{topBudget.transp}} value="{{progressT}}"></progress>
+
+        <div> Utilities : </div>
+        <progress class="utili" max={{topBudget.util}} value="{{progressU}}"></progress>
+
+        <div> Entertainment : </div>
+        <progress class="ente" max={{topBudget.entrt}} value="{{progressEn}}"></progress>
+
+        <div> Savings : </div>
+        <progress class="savi" max={{topBudget.savi}} value="{{progressS}}"></progress>
+
+        <div> Rent : </div>
+        <progress class="rent" max={{topBudget.rent}} value="{{progressR}}"></progress>
+
+        <div> Debt : </div>
+        <progress class="debt" max={{topBudget.debt}} value="{{progressD}}"></progress>
+
+      </div> 
+  </ion-content>
+</ion-view>

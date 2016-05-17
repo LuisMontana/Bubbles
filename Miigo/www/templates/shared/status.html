@@ -1,0 +1,24 @@
+<div class="row row-center">
+    <div class="col col-75">
+        <div class="row">
+            <div class="bar-con bar-one">
+                <div class="bar-prog" style="width: {{user.points/3}}%"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="bar-con bar-two">
+                <div class="bar-prog" style="width: {{user.minutes/1.2}}%"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="bar-con bar-three">
+                <div class="bar-prog" style="width: {{user.cuota/5}}%"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="row text-center balanced">{{user.points}} PTS</div>
+        <div class="row text-center positive">{{user.minutes}} MIN</div>
+        <div class="row text-center citrus">{{user.cuota}} MB</div>
+    </div>
+</div>

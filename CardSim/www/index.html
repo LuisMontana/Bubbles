@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html ng-app="CardSim">
+    <head>
+        <!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel="stylesheet" href="lib/ionic/css/ionic.css">
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <title>Simulador Tarjetas Crédito</title>
+    </head>
+    <body ng-controller="MainCtrl">
+        <ion-header-bar class="bar-positive">
+            <h1 class="title">Simulador de Tarjetas</h1>
+            <div class="buttons">
+                <button class="button"
+                ng-click="data.showDelete = !data.showDelete; data.showReorder = false;">
+                    Eliminar
+                </button>
+                <button class="button"
+                ng-click="data.showReorder = !data.showReorder; data.showDelete = false;">
+                    Mover
+                </button>
+            </div>
+        </ion-header-bar>
+        <ion-content class="has-header padding">
+            <div ng-hide="misTarjetas.length > 0" class="card">
+                <div class="item item-text-wrap item-icon-left">
+                    <i class="icon ion-arrow-down-c"></i>
+                    Comienza agregando una tarjeta de crédito para simular compras con ella.
+                </div>
+            </div>
+            <div ng-show="misTarjetas.length > 0" class="card">
+                <div class="item item-text-wrap item-icon-left">
+                    <i class="icon ion-card"></i>
+                    Selecciona una tarjeta para simularla.
+                </div>
+            </div>
+            <ion-list show-delete="data.showDelete" show-reorder="data.showReorder">
+                <div class="item item-divider">
+                    Mis Tarjetas
+                </div>
+                <ion-item class="item-remove-animate item-icon-left" ng-repeat="tarjeta in misTarjetas">
+                    <h2 ng-click="openSModal(tarjeta)"><i class="icon ion-card"></i> {{ tarjeta.nombreTipo }}</h2>
+                    <ion-delete-button class="ion-minus-circled" 
+                             ng-click="removerTarjeta(tarjeta)">
+                    </ion-delete-button>
+                    <ion-reorder-button class="ion-navicon"
+                        on-reorder="moverTarjeta(tarjeta, $fromIndex, $toIndex)">
+                    </ion-reorder-button>
+                </ion-item>
+            </ion-list>
+            <button ng-click="openModal()" class="button button-block button-positive">Agregar Tarjeta</button>
+        </ion-content>
+        <script type="text/javascript" src="lib/ionic/js/ionic.bundle.js"></script>
+        <script type="text/javascript" src="js/angular-locale_es-co.js"></script>
+        <script type="text/javascript" src="js/data.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="cordova.js"></script>
+    </body>
+</html>

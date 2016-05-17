@@ -1,0 +1,42 @@
+<ion-view view-title="Sueños">
+  <ion-content>
+    <miigo-status user="user"></miigo-status>
+    <div class="card">
+      <ion-item class="item-text-wrap text-center">
+        <h1>Sueños Miigo</h1>
+        <p>Tu ahorro actual es de {{ balance | currency }}.</p>
+        <p>Sueño más cercano: {{ topWish.name }}</p>
+        <div class="progress-wrapper">
+          <img class="progress" ng-src="{{ topWish.pic }}">
+          <round-progress
+            max="100"
+            current="topProgress"
+            color="#8FBF22"
+            bgcolor="#eaeaea"
+            radius="100"
+            stroke="20"
+            semi="false"
+            rounded="false"
+            clockwise="true"
+            responsive="false"
+            duration="800"
+            animation="easeInOutQuart"
+            animation-delay="500"></round-progress>
+        </div>
+        
+      </ion-item>
+    </div>
+    <ion-list>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="wish in wishes" type="item-text-wrap" href="#/tab/wish/{{wish.id}}">
+        <img ng-src="{{wish.pic}}">
+        <h2>{{wish.name}}</h2>
+        <p>{{wish.cost | currency }}</p>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+
+        <ion-option-button class="button-assertive" ng-click="remove(wish)">
+          Delete
+        </ion-option-button>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

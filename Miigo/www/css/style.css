@@ -1,0 +1,196 @@
+/* Empty. Add your own CSS if you like */
+
+body {
+  text-transform: uppercase;
+}
+
+h1 {font-weight: bold}
+
+.bar-con {
+  background-color: #eaeaea;
+  height: 0.5em;
+  margin: 0.5em 0;
+  width: 100%;
+
+}
+
+.bar-prog {
+  float: left;
+  height: 100%;
+  width: 0%;
+  transition: width ease-in-out 1s;
+  -webkit-transition: width ease-in-out 1s;
+  -moz-transition: width ease-in-out 1s;
+  -o-transition: width ease-in-out 1s;
+}
+
+.bar-one .bar-prog {
+  background-color: #8FBF22;
+}
+
+.bar-two .bar-prog {
+  background-color: #00A8C7;
+}
+.bar-three .bar-prog {
+  background-color: #EA5723;
+}
+
+.progress-wrapper{
+    position: relative;
+    margin:20px auto;
+    font-size: 40px;
+}
+
+.progress{
+    position: absolute;
+    color: #bbb;
+    font-weight: 100;
+    line-height: 1;
+}
+
+img.progress {
+  max-height: 100%;
+  max-width: 100%;
+  transform: translateX(-50%);
+  -moz-transform:  translateX(-50%);
+  -webkit-transform:  translateX(-50%);
+  border-radius: 50%;
+}
+
+.balanced {
+  color: #8FBF22;
+}
+
+.positive {
+  color: #00A8C7;
+}
+
+.citrus {
+  color: #EA5723;
+}
+
+.bar.bar-positive, .button.button-positive {
+  background-color: #00A8C7;
+}
+
+.bar.bar-balanced, .button.button-balanced {
+  background-color: #8FBF22;
+}
+
+
+*{
+        -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+    }
+    [ng-drag]{
+        -moz-user-select: -moz-none;
+        -khtml-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+    [ng-drag]{
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: rgba(255,0,0, 0.5);
+        color:black;
+        text-align: center;
+        padding-top:10px;
+        display: inline-block;
+        margin:0 10px;
+        cursor: move;
+    }
+    ul.draggable-objects:after{
+        display: block;
+        content:"";
+        clear:both;
+    }
+    .draggable-objects li{
+        border-radius: 50%;
+        float:left;
+        display: block;
+        width: 40px;
+        height:40px;
+    }
+    [ng-drag].drag-over{
+
+        border:solid 1px red;
+    }
+    [ng-drag].dragging{
+        opacity: 0.5;
+    }
+    [ng-drop]{
+        text-align: center;
+        position: relative;
+    }
+
+    [ng-drop] span.title{
+        display: block;
+        position: absolute;
+        top:50%;
+        left:50%;
+        width: 200px;
+        height: 20px;
+        margin-left: -100px;
+        margin-top: -10px;
+    }
+    [ng-drop] div{
+        position: relative;
+        z-index: 2;
+    }
+
+.food::-moz-progress-bar{
+  background-color: #74B8BE;
+}
+.transp::-moz-progress-bar{
+  background-color: #71AE67;
+}
+.debt::-moz-progress-bar{
+  background-color: #343F4F;
+}
+.rent::-moz-progress-bar{
+  background-color: #4A68AD;
+}
+.educ::-moz-progress-bar{
+  background-color: #745499;
+}
+.utili::-moz-progress-bar{
+  background-color: #CC5725;
+}
+.ente::-moz-progress-bar{
+  background-color: #C73B26;
+}
+.savi::-moz-progress-bar{
+  background-color: #D9BA30;
+}
+
+.food::webkit-progress-bar{
+  background-color: #74B8BE;
+}
+
+
+.food::-webkit-progress-value{
+  background-color: #74B8BE;
+}
+.transp::-webkit-progress-value{
+  background-color: #71AE67;
+}
+.debt::-webkit-progress-value{
+  background-color: #343F4F;
+}
+.rent::-webkit-progress-value{
+  background-color: #4A68AD;
+}
+.educ::-webkit-progress-value{
+  background-color: #745499;
+}
+.utili::-webkit-progress-value{
+  background-color: #CC5725;
+}
+.ente::-webkit-progress-value{
+  background-color: #C73B26;
+}
+.savi::-webkit-progress-value{
+  background-color: #D9BA30;
+}
+

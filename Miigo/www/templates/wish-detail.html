@@ -1,0 +1,37 @@
+<!--
+  This template loads for the 'tab.friend-detail' state (app.js)
+  'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
+  The FriendsCtrl pulls data from the Friends service (service.js)
+  The Friends service returns an array of friend data
+-->
+<ion-view view-title="{{wish.name}}">
+  <ion-content class="padding text-center">
+    <div class="row row-center">
+      <div class="col-30">
+        <div class="progress-wrapper">
+          <img ng-src="{{wish.pic}}" class="progress"></img>
+          <round-progress
+                max="100"
+                current="progress"
+                color="#8FBF22"
+                bgcolor="#eaeaea"
+                radius="100"
+                stroke="20"
+                semi="false"
+                rounded="false"
+                clockwise="true"
+                responsive="false"
+                duration="800"
+                animation="easeInOutQuart"
+                animation-delay="500"></round-progress>
+        </div>
+      </div>
+      <div class="col text-center">
+        <div class="row miigo-divider"><p> Total  <span>{{ wish.cost | currency }}</span></p></div>
+        <div class="row"><p> Ahorrado  <span>{{ user.balance | currency }}</span></p></div>
+      </div>
+    </div>
+    <p>{{ wish.desc }}</p>
+    <h2>Te faltan: {{ ((wish.cost > user.balance)? wish.cost-user.balance : 0) | currency }}</h2>  
+  </ion-content>
+</ion-view>
