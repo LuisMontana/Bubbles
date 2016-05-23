@@ -30,7 +30,7 @@ angular.module('miigo.services', [])
     }
 }])
 
-.factory('User', function() {
+.factory('User', function($http) {
   // Testing data
   var user = {
     id:1,
@@ -51,33 +51,51 @@ angular.module('miigo.services', [])
     update: function() {
       // Call the server and update the balance
       return true;
+    },
+    exchange: function (points, minutes, cuota) {
+      user.points -= points;
+      user.minutes += minutes;
+      user.cuota += cuota;
+    },
+    addPoints: function(points, reason) {
+      user.points += points;
+      // Call the server and update point balance
     }
   };
 })
 
-.factory('Wishes', function() {
-  // Might use a resource here that returns a JSON array
-
+.factory('Wishes', function($localstorage) {
+  var wishes = $localstorage.getObject('wishes');
   // Some fake testing data
-  var wishes = [{
-    id: 0,
-    name: 'Bicicleta',
-    cost: 1000000,
-    pic: 'img/ben.png',
-    desc: 'Mi primera bici'
-  }, {
-    id: 1,
-    name: 'Carro',
-    cost: 5000000,
-    pic: 'img/max.png',
-    desc: 'Descripción Carro'
-  }, {
-    id: 2,
-    name: 'Casa',
-    cost: 45000000,
-    pic: 'img/adam.jpg',
-    desc: 'Descripción super descriptiva de la Casa'
-  }];
+  if (wishes.length == 0)
+  {
+    wishes = [{
+      id: 0,
+      name: 'Bicicleta',
+      cost: 1000000,
+      pic: 'img/ben.png',
+      desc: 'Mi primera bici',
+      claimed: false
+    }, {
+      id: 1,
+      name: 'Carro',
+      cost: 5000000,
+      pic: 'img/max.png',
+      desc: 'Descripción Carro',
+      claimed: false
+    }, {
+      id: 2,
+      name: 'Casa',
+      cost: 45000000,
+      pic: 'img/adam.jpg',
+      desc: 'Descripción super descriptiva de la Casa',
+      claimed: false
+    }];
+  }
+  
+  var nextId = $localstorage.get('nextWish', 3);
+  
+  var wishClaim = 0;
 
   return {
     all: function() {
@@ -85,6 +103,7 @@ angular.module('miigo.services', [])
     },
     remove: function(wish) {
       wishes.splice(wishes.indexOf(wish), 1);
+      $localstorage.setObject('wishes', wishes);
     },
     get: function(wishId) {
       for (var i = 0; i < wishes.length; i++) {
@@ -95,7 +114,10 @@ angular.module('miigo.services', [])
       return null;
     },
     add: function(wish) {
+      wish.id = nextId++;
       wishes.push(wish);
+      $localstorage.setObject('wishes', wishes);
+      $localstorage.set('nextWish', nextId);
     },
     top: function() {
       if(wishes.length > 0)
@@ -111,6 +133,12 @@ angular.module('miigo.services', [])
         return minWish;
       }
       return null;
+    },
+    canClaim: function () {
+      return (wishClaim < 2);
+    },
+    claim: function() {
+      wishClaim++;
     }
   };
 })
@@ -129,22 +157,10 @@ var budgets  = [{
     debt: 8000,
     salary: 36000,
     strt: 1463212865548,
-    end: 1
+    end: 12,
+    mleft: 0
   }, {
     id: 1,
-    educ: 0,
-    food: 0,
-    transp: 0,
-    rent: 0,
-    util: 0,
-    savi: 0,
-    entrt: 0,
-    debt: 0,
-    salary: 0,
-    strt: 1463212865548,
-    end: 1
-  }, {
-    id: 2,
     educ: 8000,
     food: 7000,
     transp: 6000,
@@ -155,8 +171,23 @@ var budgets  = [{
     debt: 5000,
     salary: 36000,
     strt: 1463212865548,
-    end: 1
-}];
+    end: 10,
+    mleft: 0
+  },{
+    id: 2,
+    educ: 0,
+    food: 0,
+    transp: 0,
+    rent: 0,
+    util: 0,
+    savi: 0,
+    entrt: 0,
+    debt: 0,
+    salary: 200,
+    strt: 1463212865548,
+    end: 15,
+    mleft: 0
+  }];
 
 return {
     all: function() {
@@ -173,6 +204,24 @@ return {
       }
       return null;
     },
+    newB: function(date){
+      nBudget = {
+        id: this.top().id+1,
+        educ: 0,
+        food: 0,
+        transp: 0,
+        rent: 0,
+        util: 0,
+        savi: 0,
+        entrt: 0,
+        debt: 0,
+        salary: 0,
+        strt: date,
+        end: 1,
+        mleft: 0
+        }
+      this.add(nBudget);
+    },
     add: function(budget) {
       budgets.push(budget);
     },
@@ -187,7 +236,6 @@ return {
   };
 
 })
-
 // Filter for searching a card by name in an array, usable with ng-repeat
 .filter('getByName', function() {
   return function(input, nombre) {

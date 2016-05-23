@@ -7,16 +7,31 @@
       </ion-item>
     </div>
     <ion-list>
-    <ion-item class="item-icon-left item-icon-right">
-      <i class="icon ion-ios-telephone"></i>
-        Redimir Minutos
-      <i class="icon ion-chevron-right icon-accessory"></i>
+    <ion-item>
+      <div class="row">
+        <div class="col"><i class="icon ion-ios-telephone balanced miigo-big"></i></div>
+        <div class="col"><div ng-class="{'button-positive': package=='TS'}" ng-click="selectPackage('TS')" class="button">S</div></div>
+        <div class="col"><div ng-class="{'button-positive': package=='TM'}" ng-click="selectPackage('TM')" class="button">M</div></div>
+        <div class="col"><div ng-class="{'button-positive': package=='TL'}" ng-click="selectPackage('TL')" class="button">L</div></div>
+      </div>
     </ion-item>
-    <ion-item class="item-icon-left item-icon-right">
-      <i class="icon ion-wifi"></i>
-        Redimir Dato
-      <i class="icon ion-chevron-right icon-accessory"></i>
+    <ion-item>
+      <div class="row">
+        <div class="col"><i class="icon ion-wifi balanced miigo-big"></i></div>
+        <div class="col"><div ng-class="{'button-positive': package=='DS'}" ng-click="selectPackage('DS')" class="button">S</div></div>
+        <div class="col"><div ng-class="{'button-positive': package=='DM'}" ng-click="selectPackage('DM')" class="button">M</div></div>
+        <div class="col"><div ng-class="{'button-positive': package=='DL'}" ng-click="selectPackage('DL')" class="button">L</div></div>
+      </div>
     </ion-item>
+    <div class="card">
+      <ion-item class="item-text-wrap">
+        <p ng-show="isMinutos()">Vas a cambiar <strong>{{ equiv[package][0] }} puntos </strong> por <strong>{{ equiv[package][1] }} minutos.</strong></p>
+        <p ng-hide="isMinutos()">Vas a cambiar <strong>{{ equiv[package][0] }} puntos </strong> por <strong>{{ equiv[package][1] }} MB.</strong></p>   
+      </ion-item>
+    </div>
     </ion-list>
   </ion-content>
+  <ion-footer-bar class="bar-positive miigo-footer">
+    <button ng-click="exchange()" class="button button-full button-positive">Cambiar</button>
+  </ion-footer-bar>
 </ion-view>

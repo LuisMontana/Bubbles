@@ -6,23 +6,25 @@
         <h1>Sueños Miigo</h1>
         <p>Tu ahorro actual es de {{ balance | currency }}.</p>
         <p>Sueño más cercano: {{ topWish.name }}</p>
-        <div class="progress-wrapper">
-          <img class="progress" ng-src="{{ topWish.pic }}">
-          <round-progress
-            max="100"
-            current="topProgress"
-            color="#8FBF22"
-            bgcolor="#eaeaea"
-            radius="100"
-            stroke="20"
-            semi="false"
-            rounded="false"
-            clockwise="true"
-            responsive="false"
-            duration="800"
-            animation="easeInOutQuart"
-            animation-delay="500"></round-progress>
-        </div>
+        <a href="#/tab/wish/{{topWish.id}}">
+          <div class="progress-wrapper">
+            <img class="progress" ng-src="{{ topWish.pic }}">
+            <round-progress
+              max="100"
+              current="topProgress"
+              color="#8FBF22"
+              bgcolor="#eaeaea"
+              radius="100"
+              stroke="20"
+              semi="false"
+              rounded="false"
+              clockwise="true"
+              responsive="false"
+              duration="800"
+              animation="easeInOutQuart"
+              animation-delay="500"></round-progress>
+          </div>
+        </a>
         
       </ion-item>
     </div>
@@ -39,4 +41,7 @@
       </ion-item>
     </ion-list>
   </ion-content>
+  <ion-footer-bar class="bar-positive miigo-footer">
+    <button ng-click="openModal()" class="button button-full button-positive">Agregar un Sueño</button>
+  </ion-footer-bar>
 </ion-view>

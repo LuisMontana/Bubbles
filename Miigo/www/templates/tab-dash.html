@@ -1,19 +1,63 @@
-<ion-view view-title="Dashboard">
-  <ion-content class="padding">
-    <h2>Ionic Framework</h2>
-    <p>
-     Dev resources, check out the <a href="http://market.ionic.io/starters" target="_blank">Ionic Market</a>.
-    </p>
-    <p>
-      To edit the content of each tab, edit the corresponding template file in <code>www/templates/</code>. This template is <code>www/templates/tab-dash.html</code>
-    </p>
-    <p>
-    The repo for this project is hosted on <a href="https://github.com/Sirquini/MiigoApps" target="_blank">Github</a>.
-    </p>
-    <p>
-      For help sending push notifications, we can use <a href="https://apps.ionic.io/signup" target="_blank">Ionic Platform</a> and check out <a href="http://docs.ionic.io/docs/push-overview" target="_blank">Ionic Push</a>.
-    </p>
-    <p>Docs for the Ionic Framework can be found in the <a href="http://ionicframework.com/docs/overview/" target="_blank">Ionic Documentation</a>.</p>
-    <p>Icons from <a href="http://ionicons.com/" target="_blank"> ionicons</a>.</p>
+<ion-view view-title="Miigo">
+  <ion-content class="padding text-center">
+    <h2>Hola</h2>
+    <h1>{{user.f_name}} {{user.l_name}}</h1>
+    <div class="progress-wrapper">
+      <img src="img/miigo_logo.png" class="miigo-progress">
+      <round-progress
+                max="300"
+                current="user.points"
+                color="#8FBF22"
+                bgcolor="#eaeaea"
+                radius="100"
+                stroke="10"
+                semi="false"
+                rounded="false"
+                clockwise="true"
+                responsive="false"
+                duration="800"
+                animation="easeInOutQuart">
+
+                <round-progress
+                    max="240"
+                    current="user.minutes"
+                    color="#00A8C7"
+                    bgcolor="#eaeaea"
+                    radius="100"
+                    stroke="10"
+                    semi="false"
+                    rounded="false"
+                    clockwise="true"
+                    responsive="false"
+                    duration="800"
+                    animation="easeInOutQuart"
+                    animation-delay="400"
+                    offset="inherit">
+
+
+                    <round-progress
+                        max="500"
+                        current="user.cuota"
+                        color="#EA5723"
+                        bgcolor="#eaeaea"
+                        radius="100"
+                        stroke="10"
+                        semi="false"
+                        rounded="false"
+                        clockwise="true"
+                        responsive="false"
+                        duration="800"
+                        animation="easeInOutQuart"
+                        animation-delay="600"
+                        offset="inherit"></round-progress>
+                </round-progress>
+            </round-progress>
+    </div>
+    <h3>Tu saldo actual es de <strong class="balanced">{{ user.balance | currency }}</strong></h3>
+    <div class="row">
+      <div class="col positive"><strong>{{ user.points }} Points</strong></div>
+      <div class="col balanced"><strong>{{ user.minutes }} Minutes</strong></div>
+      <div class="col citrus"><strong>{{ user.cuota }} MB</strong></div>
+    </div>
   </ion-content>
 </ion-view>

@@ -1,77 +1,18 @@
-<ion-view view-title="Bubbles">
-  <ion-content>
-  <miigo-status user="user"></miigo-status>
-    <div class="card">
-      <ion-item class="text-wrap">
-        <h3><b>New Budget</b></h3>  
-        <h6>Budget Timeframe ( {{now}} )</h6> 
+<ion-view view-title="Bubbles Selection">
 
-        <div class="range range-assertive" >
-          <input type="range" min="1" max="30" value="1" ng-model="topBudget.end"> 
-          {{topBudget.end}} dia(s)
-        </div>
+    <ion-header-bar class="bar-balanced">
 
-  		  <h6>Income for this timeframe </h6>
+        
 
-       	  <input type="text" style="border:1px solid gray" ng-model="topBudget.salary">
-
-      </ion-item>      
-
-      <ul  ng-hide="showExtract" class="draggable-objects">
-            <li  ng-repeat="obj in draggableObjects" >
-                <div ng-drag="true" ng-drag-data="obj" data-allow-transform="true"> {{extract}} </div>
-            </li>
-      </ul>
-
-
-      <div class="row">
-      	<div class="col" ng-drop="true" ng-drop-success="onDropComplete('transp')">
-      		<img width="70%"  src='img/transport.png'>
-      		<h6> $ {{topBudget.transp}}</h6>
-      	</div>
-      	<div class="col" ng-drop="true" ng-drop-success="onDropComplete('savi')">
-      		<img width="70%" src='img/savings.png'>
-      		<h6> $ {{topBudget.savi}}</h6>
-      	</div>
-      	<div class="col" ng-drop="true" ng-drop-success="onDropComplete('util')">
-      		<img width="70%" src='img/utilities.png'>
-      		<h6> $ {{topBudget.util}}</h6>
-      	</div>
-      </div>
-
-      <div class="row">
-      	<div class="col" ng-drop="true" ng-drop-success="onDropComplete('food')">
-      		<img width="70%" src='img/food.png'>
-      		<h6> $ {{topBudget.food}}</h6>
-      	</div>
-      	<div class="col" ng-drop="true" >
-      		<img width="70%" ng-click="showPopup()" src='img/salary.png'>
-      		<h6> $ {{topBudget.salary}}</h6>
-      	</div>
-      	<div class="col" ng-drop="true" ng-drop-success="onDropComplete('entrt')">
-      		<img width="70%" src='img/entertainment.png'>
-      		<h6> $ {{topBudget.entrt}}</h6>
-      	</div>
-      </div>
-
-      <div class="row">
-      	<div class="col" ng-drop="true" ng-drop-success="onDropComplete('rent')">
-      		<img width="70%" src='img/rent.png'>
-      		<h6> $ {{topBudget.rent}}</h6>
-      	</div>
-      	<div class="col" ng-drop="true" ng-drop-success="onDropComplete('debt')">
-      		<img width="70%" src='img/debt.png'>
-      		<h6> $ {{topBudget.debt}}</h6>
-      	</div>
-      	<div class="col" ng-drop="true" ng-drop-success="onDropComplete('educ')">
-      		<img width="70%" src='img/education.png'>
-      		<h6> $ {{topBudget.educ}}</h6>
-      	</div>
-      </div>
-      <a href="#/tab/bubbles/{{topBudget.id}}">
-        <button  class="button button-positive">Save</button>
-      </a>
-    </div>
-
-  </ion-content>
+    </ion-header-bar>
+    <ion-content class="has-header">
+    <miigo-status user="user"></miigo-status>
+        <ion-item  type="item-text-wrap" >Seleccionar presupuesto</ion-item>
+        <ion-item  type="item-text-wrap" ng-repeat="budget in budgets"  href="#/tab/bubbles/{{budget.id}}"> 
+            <h4> <b>Identificador: {{budget.id}}  Duración: {{budget.end}} días</b> </h4>
+        </ion-item>
+        <ion-item href="#/tab/bubbles/new">
+        <button  class="button button-full button-positive">Nuevo Presupuesto</button>
+        </ion-item >
+    </ion-content>
 </ion-view>

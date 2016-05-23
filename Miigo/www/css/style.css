@@ -1,7 +1,23 @@
 /* Empty. Add your own CSS if you like */
 
+@font-face {
+    font-family: 'Montserrat';
+    src: url('fonts/Montserrat-Regular.eot') format('opentype');
+}
+@font-face {
+    font-family: 'Montserrat';
+    font-weight: 300;
+    src: url('fonts/Montserrat-Light.eot') format('opentype');
+}
+@font-face {
+    font-family: 'Montserrat';
+    font-weight: bold;
+    src: url('fonts/Montserrat-Bold.eot') format('opentype');
+}
+
 body {
   text-transform: uppercase;
+  font-family: 'Monserrat', "-apple-system", "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
 }
 
 h1 {font-weight: bold}
@@ -11,7 +27,6 @@ h1 {font-weight: bold}
   height: 0.5em;
   margin: 0.5em 0;
   width: 100%;
-
 }
 
 .bar-prog {
@@ -35,13 +50,17 @@ h1 {font-weight: bold}
   background-color: #EA5723;
 }
 
+.rounded-corners {
+  border-radius: 50%;
+}
+
 .progress-wrapper{
     position: relative;
     margin:20px auto;
     font-size: 40px;
 }
 
-.progress{
+.progress, .miigo-progress {
     position: absolute;
     color: #bbb;
     font-weight: 100;
@@ -49,12 +68,39 @@ h1 {font-weight: bold}
 }
 
 img.progress {
+  max-width: 200px;
+  height: 100%;
+  transform: translateX(-50%);
+  -moz-transform:  translateX(-50%);
+  -webkit-transform:  translateX(-50%);
+  border-radius: 50%;
+}
+
+img.miigo-progress {
   max-height: 100%;
   max-width: 100%;
   transform: translateX(-50%);
   -moz-transform:  translateX(-50%);
   -webkit-transform:  translateX(-50%);
   border-radius: 50%;
+}
+
+.miigo-big {
+  font-size: 3em;
+}
+
+.miigo-status .row, .miigo-status.col {
+  padding-left: 0;
+  padding-right: 0;
+  white-space: nowrap;
+}
+
+.miigo-footer {
+  padding: 0;
+}
+
+.miigo-footer .button-full {
+  margin: 0;
 }
 
 .balanced {
@@ -69,14 +115,25 @@ img.progress {
   color: #EA5723;
 }
 
-.bar.bar-positive, .button.button-positive {
+.bar.bar-positive {
+  border-color: #48BCC9;
+}
+
+.bar.bar-positive, .button.button-positive, .bar-positive .button {
   background-color: #00A8C7;
 }
 
-.bar.bar-balanced, .button.button-balanced {
+ion-tabs.tabs-color-active-positive .tab-item.tab-item-active, ion-tabs.tabs-color-active-positive .tab-item.active, ion-tabs.tabs-color-active-positive .tab-item.activated {
+    color: #00A8C7;
+}
+
+.bar.bar-balanced, .button.button-balanced, .bar-balanced .button {
   background-color: #8FBF22;
 }
 
+.bar.bar-citrus, .button.button-citrus, .bar-citrus .button {
+  background-color: #EA5723;
+}
 
 *{
         -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
@@ -194,3 +251,31 @@ img.progress {
   background-color: #D9BA30;
 }
 
+.food{
+  color: #74B8BE;
+}
+.transp{
+  color: #71AE67;
+}
+.debt{
+  color: #343F4F;
+}
+.rent{
+  color: #4A68AD;
+}
+.educ{
+  color: #745499;
+}
+.utili{
+  color: #CC5725;
+}
+.ente{
+  color: #C73B26;
+}
+.savi{
+  color: #D9BA30;
+}
+
+.food{
+ color: #74B8BE;
+}

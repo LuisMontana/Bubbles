@@ -1,0 +1,33 @@
+<ion-modal-view>
+    <ion-header-bar class="bar-positive">
+        <h1 class="title">Agregar Sueño</h1>
+        <div class="buttons">
+            <button class="button" ng-click="closeModal()">Cancelar</button>
+        </div>
+    </ion-header-bar>
+    <ion-content class="has-header">
+        <ion-list>
+            <label class="item item-input item-stacked-label">
+                <span class="input-label">Nombre</span>
+                <input type="text" placeholder="Nombre" ng-model="inputWish.name" required>
+            </label>
+            <label class="item padding">
+                <button class="button button-balanced button-block" ng-click="addImage()">
+                    Agregar Foto
+                </button>
+                <img class="rounded-corners" ng-src="{{inputWish.pic}}" height="200px">
+            </label>
+            <label class="item item-input item-stacked-label">
+                <span class="input-label">Precio</span>
+                <input type="number" placeholder="$$$ COP" ng-model="inputWish.cost" required>
+            </label>
+            <label class="item item-input item-stacked-label">
+                <span class="input-label">Texto</span>
+                <input type="text" placeholder="Descripción" ng-model="inputWish.desc" required>
+            </label>
+        </ion-list>
+        <div class="padding">
+            <button class="button button-balanced button-block" ng-click="addWish()">Agregar</button>
+        </div>
+    </ion-content>
+</ion-modal-view>

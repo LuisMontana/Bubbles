@@ -3,53 +3,50 @@
     <miigo-status user="user"></miigo-status>
     <div >
         <div class="item item-divider">
-          Budget for the next {{topBudget.end}} day(s)
+          Presupuesto para {{topBudget.end}} día(s)
         </div>
       </div>
 
-      <div >
+      <ion-item>
       	
         	<canvas heigth="60%" id="pie" class="chart chart-pie"
-          		chart-data="data" chart-labels="labels" chart-colours="colors">
+          		chart-data="data" chart-labels="labels" chart-colours="colours">
           </canvas> 
          
-          <div>Budget: {{topBudget.salary}}</div>
+          <div class="item item-divider">Presupuesto: ${{topBudget.salary}}</div>
 
-          <div> Money Spent: {{spent}}</div>
+          <div class="item item-divider">Gastos a la fecha: ${{spent}}</div>
+          <div class="item item-divider">Dinero sobrante : ${{mleft}} </div> 
 
+      </ion-item >
 
-      </div>  
+      <ion-item>   
 
-      <div >
-        <div class="item item-divider">
-          Money Left : {{mleft}}
-        </div> 
-
-        <div> Education : </div>
+        <div> Educación : ${{progressE}} </div>
 
         <progress id="progressbar" class="educ" max={{topBudget.educ}} value="{{progressE}}"></progress>
 
-        <div> Food : </div>
+        <div class="food"> Comida : ${{progressF}}</div>
         <progress class="food" max={{topBudget.food}} value="{{progressF}}" ></progress>
 
-        <div> Transport : </div>
+        <div class="transp"> Transporte : ${{progressT}} </div>
         <progress class="transp" max={{topBudget.transp}} value="{{progressT}}"></progress>
 
-        <div> Utilities : </div>
+        <div class="utili"> Servicios : ${{progressU}} </div>
         <progress class="utili" max={{topBudget.util}} value="{{progressU}}"></progress>
 
-        <div> Entertainment : </div>
+        <div class="ente"> Entretenimiento : ${{progressEn}} </div>
         <progress class="ente" max={{topBudget.entrt}} value="{{progressEn}}"></progress>
 
-        <div> Savings : </div>
+        <div class="savi"> Ahorros : ${{progressS}}</div>
         <progress class="savi" max={{topBudget.savi}} value="{{progressS}}"></progress>
 
-        <div> Rent : </div>
+        <div class="rent"> Renta : ${{progressR}}</div>
         <progress class="rent" max={{topBudget.rent}} value="{{progressR}}"></progress>
 
-        <div> Debt : </div>
+        <div class="debt"> Deuda : ${{progressD}}</div>
         <progress class="debt" max={{topBudget.debt}} value="{{progressD}}"></progress>
 
-      </div> 
+    </ion-item >
   </ion-content>
 </ion-view>

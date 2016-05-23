@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('miigo', ['ionic', 'miigo.controllers', 'miigo.services', 'miigo.directives', 'angular-svg-round-progressbar', 'ngDraggable', 'chart.js'])
+angular.module('miigo', ['ionic', 'ngCordova', 'miigo.controllers', 'miigo.services', 'miigo.directives', 'angular-svg-round-progressbar', 'ngDraggable', 'chart.js'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -79,17 +79,27 @@ angular.module('miigo', ['ionic', 'miigo.controllers', 'miigo.services', 'miigo.
       }
     })
     
+  .state('tab.bubbles-config', {
+      url: '/bubbles/:budgetId',
+      views: {
+        'tab-bubbles': {
+          templateUrl: 'templates/bubbles-config.html',
+          controller: 'BubblesCtrl'
+        }
+      }
+    })
+
   .state('tab.bubbles', {
       url: '/bubbles',
       views: {
         'tab-bubbles': {
           templateUrl: 'templates/tab-bubbles.html',
-          controller: 'BubblesCtrl'
+          controller: 'BubblesSelCtrl'
         }
       }
     })
     .state('tab.bubbles-overview', {
-    url: '/bubbles/:budgetId',
+    url: '/bubbles/:budgetId/overview',
       views: {
         'tab-bubbles': {
           templateUrl: 'templates/bubbles-overview.html',
